@@ -1,3 +1,4 @@
+
 //Original creator at https://makecode.microbit.org/25497-93085-45916-45768
 
 enum Dir { Up = 0, Down, Left, Right }
@@ -49,7 +50,7 @@ basic.forever(() => {
                 score++
                 getNewDot()
                 if (score % 2 == 0 && gameSpeed > 100) {
-                    gameSpeed = gameSpeed - 100
+                    gameSpeed = gameSpeed - 50
                 } else {
                     dropTail();
                 }
@@ -113,7 +114,6 @@ input.onButtonPressed(Button.B, () => {
 function loseGame() {
     allowInput = false;
     gameRunning = false;
-    //basic.showIcon(IconNames.No)
     basic.showAnimation(`
         #####.........................#####
         #####.###.................###.#####
@@ -148,11 +148,11 @@ function getNewDot() {
     led.plot(dotX, dotY)
 }
 function getNotLit(): { X: number, Y: number } {
-    let x = Math.randomRange(0, 5);
-    let y = Math.randomRange(0, 5);
+    let x = Math.randomRange(0, 4);
+    let y = Math.randomRange(0, 4);
     while (led.point(x, y)) {
-        x = Math.randomRange(0, 5)
-        y = Math.randomRange(0, 5)
+        x = Math.randomRange(0, 4)
+        y = Math.randomRange(0, 4)
     }
     return { X: x, Y: y }
 }
@@ -164,4 +164,3 @@ function dropTail() {
     snakePartsX.shift();
     snakePartsY.shift();
 }
-
