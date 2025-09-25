@@ -10,8 +10,13 @@ input.onButtonPressed(Button.AB, function () {
     }
     if (Bold.isTouching(Spiller)) {
         game.addScore(1)
+    } else {
+        game.removeLife(1)
     }
     Bold.delete()
+    if (game.isGameOver()) {
+        game.gameOver()
+    }
 })
 input.onButtonPressed(Button.B, function () {
     Spiller.change(LedSpriteProperty.X, 1)
@@ -19,10 +24,9 @@ input.onButtonPressed(Button.B, function () {
 input.onGesture(Gesture.Shake, function () {
     basic.showNumber(game.score())
 })
+
 let Bold: game.LedSprite = null
 let Spiller: game.LedSprite = null
+game.setLife(3)
 game.setScore(0)
 Spiller = game.createSprite(2, 4)
-basic.forever(function () {
-	
-})
