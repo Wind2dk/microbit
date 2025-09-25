@@ -1,4 +1,3 @@
-
 //Original creator at https://makecode.microbit.org/25497-93085-45916-45768
 
 enum Dir { Up = 0, Down, Left, Right }
